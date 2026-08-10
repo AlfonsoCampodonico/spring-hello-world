@@ -6,16 +6,29 @@ package com.alfonso.hello;
  */
 public class Greeter {
 
-    private static final String DEFAULT_NAME = "World";
+    static final String DEFAULT_NAME = "World";
+    static final String DEFAULT_GREETING = "Hello";
 
     /**
+     * Greets with the default salutation.
+     *
      * @param name the name to greet; may be null, empty, or whitespace
      * @return the greeting text, never null
      */
     public String greet(String name) {
-        if (name == null || name.isBlank()) {
-            return "Hello, " + DEFAULT_NAME + "!";
-        }
-        return "Hello, " + name.strip() + "!";
+        return greet(name, null);
+    }
+
+    /**
+     * @param name     the name to greet; may be null, empty, or whitespace
+     * @param greeting the salutation to use; falls back to "Hello" when absent
+     * @return the greeting text, never null
+     */
+    public String greet(String name, String greeting) {
+        return blankTo(greeting, DEFAULT_GREETING) + ", " + blankTo(name, DEFAULT_NAME) + "!";
+    }
+
+    private static String blankTo(String value, String fallback) {
+        return (value == null || value.isBlank()) ? fallback : value.strip();
     }
 }

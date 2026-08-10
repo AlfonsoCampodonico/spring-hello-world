@@ -30,4 +30,19 @@ class GreeterTest {
     void trimsSurroundingWhitespace() {
         assertThat(greeter.greet("  Ada  ")).isEqualTo("Hello, Ada!");
     }
+
+    @Test
+    void usesACustomGreeting() {
+        assertThat(greeter.greet("Alfonso", "Howdy")).isEqualTo("Howdy, Alfonso!");
+    }
+
+    @Test
+    void fallsBackToHelloWhenGreetingIsBlank() {
+        assertThat(greeter.greet("Alfonso", "  ")).isEqualTo("Hello, Alfonso!");
+    }
+
+    @Test
+    void appliesBothFallbacksAtOnce() {
+        assertThat(greeter.greet(null, null)).isEqualTo("Hello, World!");
+    }
 }
