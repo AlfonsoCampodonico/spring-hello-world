@@ -31,6 +31,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Serves /actuator/health, which Laravel Cloud detects for health checks. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!-- Enables @Valid on request bodies (Jakarta Bean Validation). -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
